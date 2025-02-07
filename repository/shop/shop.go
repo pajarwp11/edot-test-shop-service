@@ -16,7 +16,7 @@ func NewShopRepository(mysql *sqlx.DB) *ShopRepository {
 	}
 }
 
-func (p *ShopRepository) Insert(shop *shop.RegisterRequest) error {
-	_, err := p.mysql.Exec("INSERT INTO shops (name,user_id) VALUES (?,?,)", shop.Name, shop.UserId)
+func (s *ShopRepository) Insert(shop *shop.RegisterRequest) error {
+	_, err := s.mysql.Exec("INSERT INTO shops (name,user_id) VALUES (?,?,)", shop.Name, shop.UserId)
 	return err
 }
