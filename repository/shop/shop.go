@@ -23,6 +23,6 @@ func (s *ShopRepository) Insert(shop *shop.RegisterRequest) error {
 
 func (s *ShopRepository) GetById(id int) (*shop.Shop, error) {
 	shop := shop.Shop{}
-	err := s.mysql.Get(&shop, "SELECT email,address,user_id FROM shops WHERE id=?", id)
+	err := s.mysql.Get(&shop, "SELECT id,name,address,user_id FROM shops WHERE id=?", id)
 	return &shop, err
 }

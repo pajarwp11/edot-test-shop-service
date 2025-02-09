@@ -20,7 +20,7 @@ func main() {
 	shopUsecase := shopUsecase.NewShopUsecase(shopRepository)
 	shopHandler := shopHandler.NewShopHandler(shopUsecase)
 	router.Handle("/shop/register", middleware.JWTMiddleware(http.HandlerFunc(shopHandler.Register))).Methods(http.MethodPost)
-	router.Handle("/shop/:id", middleware.JWTMiddleware(http.HandlerFunc(shopHandler.GetById))).Methods(http.MethodGet)
+	router.Handle("/shop/{id}", middleware.JWTMiddleware(http.HandlerFunc(shopHandler.GetById))).Methods(http.MethodGet)
 
 	fmt.Println("server is running")
 	err := http.ListenAndServe(":8002", router)

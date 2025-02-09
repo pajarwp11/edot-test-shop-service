@@ -49,6 +49,9 @@ func (s *ShopHandler) Register(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	userID := req.Header.Get("X-User-ID")
+	request.UserId, _ = strconv.Atoi(userID)
+
 	err := s.shopUsecase.Register(&request)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
